@@ -1,8 +1,6 @@
 class ActividadesPermitidas:
-
+    actividadesAutorizadas=[]
     def __init__(self,actividad):
-        actividad=[]
-        
         self.actividad=actividad
-
-        actividad.append(self.actividad)
+        self.actividadesAutorizadas.append(self.actividad)
+        
