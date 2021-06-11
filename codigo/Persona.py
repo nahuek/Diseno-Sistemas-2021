@@ -1,21 +1,27 @@
 from PuestoDeControl import PuestoControl
+import os
 class Persona:
 
-    def __init__(self,nom,apell,dni,domi,tel,email):
-        self.nombre=nom
-        self.apellido=apell
-        self.dni=dni
-        self.domicilio=domi
-        self.telefono=tel
-        self.email=email
+    def __init__(self, nom, apell, dni, domi, tel, email):
+        self._nombre=nom
+        self.__apellido=apell
+        self._dni=dni
+        self.__domicilio=domi
+        self.__telefono=tel
+        self.__email=email
+
 
     def mostrar(self):
-        print("Nombre:",self.nombre,self.apellido,"DNI:",self.dni)
+        print("Nombre:",self._nombre,self.__apellido,"\nDNI:",self._dni)
 
-    def pedirIngreso(self,dni):
-        self.documento=dni
-        verificar=PuestoControl()
-        condicion=verificar.autorizarPersona(self.dni)
+
+    def pedir_ingreso(self,dni):
+        self._documento=dni
+        os.system("pause")
+        os.system ("cls")
+
+        verificar = PuestoControl()
+        condicion=verificar._autorizar_persona(self._documento)
 
         if condicion == True:
             self.mostrar()

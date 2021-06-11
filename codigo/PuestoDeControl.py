@@ -1,17 +1,23 @@
+from os import truncate
+from PersonasAutorizadas import PersonasAutorizadas
+from datetime import date
+
 class PuestoControl:
-    personasAutorizadas={}
-    
-    def registrarPersona(self,cliente,actividad):
-        self.cliente=cliente
-        self.actividad=actividad
-        self.personasAutorizadas[self.cliente.dni]=self.actividad
-        return self.personasAutorizadas
 
-    def autorizarPersona(self,dni):
-        self.documento=dni
-
-        if self.documento in self.personasAutorizadas:
-            return True
+    def _autorizar_persona(self, dni):
+        self.DNI=dni
+        
+        lista = PersonasAutorizadas()
+        autorizaciones = lista._personas()
+        
+        if self.DNI in autorizaciones:
+            today = date.today()
+            
+            if autorizaciones[self.DNI][1] > today:
+                return True
+            else:
+                print("-Autorizacion vencida-")
+                return False
         else:
+            print("La persona no esta registrada")
             return False
-    

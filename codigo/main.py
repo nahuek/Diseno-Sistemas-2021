@@ -1,11 +1,12 @@
-from ActividadesPermitidas import ActividadesPermitidas
+from datetime import date
 from Persona import Persona
 from PuestoDeControl import PuestoControl
+from Empresa import Empresa
+import os
 
-#Actividades Autorizadas
-actividad1=ActividadesPermitidas("Asistencia publica")
-actividad2=ActividadesPermitidas("Medico")
-actividad3=ActividadesPermitidas("Obra")
+#registro de empresa y sus actividades
+empresa1=Empresa("S.R.L",9-4536-8,"domicilio","localidad","@@@@","telefono3564")
+empresa2=Empresa("S.A",9-4536-8,"domicilio","localidad","@@@@","telefono3564")
 
 #Personas
 persona1=Persona("Nahuel","Arrieta",38108760,"Domicilio 1111",425789,"@@@@@@@")
@@ -13,11 +14,17 @@ persona2=Persona("Lautaro","Arrieta",48108760,"Domicilio 2222",425789,"@@@@@@@")
 persona3=Persona("Magali","Arrieta",11711354,"Domicilio 333",425789,"@@@@@@@")
 
 #registrar persona
-registrar=PuestoControl()
-registrar.registrarPersona(persona1,actividad1)
-registrar.registrarPersona(persona3,actividad2)
+empresa1._registrar_persona(persona1, date(2021,5,15))
+empresa1._registrar_persona(persona2, date(2021,5,2))
+empresa2._registrar_persona(persona3, date(2021,5,20))
 
 #pedir ingreso
-persona1.pedirIngreso(persona1.dni)
-persona2.pedirIngreso(persona2.dni)
-persona3.pedirIngreso(persona3.dni)
+persona1.pedir_ingreso(persona1._dni)
+persona2.pedir_ingreso(persona2._dni)
+persona3.pedir_ingreso(persona3._dni)
+
+#dar de baja
+empresa1._dar_baja_persona()
+
+#pedir ingreso despues de baja
+persona2.pedir_ingreso(persona2._dni)
