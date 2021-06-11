@@ -4,7 +4,7 @@ from datetime import date
 
 class PuestoControl:
 
-    def _autorizar_persona(self, dni):
+    def _autorizar_ingreso(self, dni):
         self.DNI=dni
         
         lista = PersonasAutorizadas()
