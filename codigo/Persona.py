@@ -15,17 +15,19 @@ class Persona:
         print("Nombre:",self._nombre,self.__apellido,"\nDNI:",self._dni)
 
 
-    def pedir_ingreso(self,dni):
-        self._documento=dni
+    def pedir_ingreso(self, nombre):
         os.system("pause")
         os.system ("cls")
-
         verificar = PuestoControl()
-        condicion=verificar._autorizar_persona(self._documento)
-
+        condicion=verificar._autorizar_persona(nombre)
         if condicion == True:
             self.mostrar()
             print("-Tiene el acceso permitido")
         elif condicion == False:
             self.mostrar()
             print("-Tiene el acceso denegado")
+
+
+    def pedir_egreso(self, nombre):
+        verificar = PuestoControl()
+        verificar.registrar_salida(nombre)   
